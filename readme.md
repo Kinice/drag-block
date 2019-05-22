@@ -2,30 +2,32 @@
 
 一个简单的、将所有设置定位的元素变为可拖拽的小工具。
 
-## Usage
+## Installation
 
 通过npm安装：
-```
+```bash
 $ npm i -S drag-block
 ```
-在项目中import(ES6 modules)
-```
-import DragBlock from 'drag-block'
-```
-
 或直接获取源码：
 
 [Releases](https://github.com/Kinice/drag-block/releases)
 
-在html中用引入源码中的`lib/drag-block.js`：
+## Usage
 
+在项目中import(ES6 modules)
+```javascript
+import DragBlock from 'drag-block'
 ```
-<script src="drag-block.js"><script>
+
+或在html中用引入源码中的`lib/drag-block.js`：
+
+```html
+<script src="drag-block.js"></script>
 ```
 
 然后在js中使用：
 
-```
+```javascript
 import DragBlock from 'drag-block'
 
 new DragBlock(DomElement, options)
