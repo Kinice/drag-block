@@ -38,7 +38,7 @@ class DragBlock {
   }
 
   _setWrapper() {
-    let wrapper = document.querySelector('.drag-wrapper') || this._createDom('div', {
+    let wrapper = this._createDom('div', {
       class: 'drag-wrapper'
     })
     wrapper.addEventListener('mouseup', this.wrapperMouseupHandler.bind(this))
@@ -95,11 +95,11 @@ class DragBlock {
   }
 
   targetMouseoverHandler(e) {
-    this.bar.classList.add('show')
+    if (this.bar) this.bar.classList.add('show')
   }
 
   targetMouseleaveHandler(e) {
-    this.bar.classList.remove('show')
+    if (this.bar) this.bar.classList.remove('show')
   }
 
   _createDom(type = 'div', options = {}, content) {
