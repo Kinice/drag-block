@@ -3,12 +3,17 @@ class DragBlock {
   constructor(dom, options = {}) {
     this.target = dom
     if (!this.target) return
+    this.options = Object.assign({
+      useDragBar: true
+    }, options)
+
     this.targetStyles = window.getComputedStyle(dom)
     this.target.style.left = this.targetStyles.left || `${this.target.offsetLeft}px`
     this.target.style.top = this.targetStyles.top || `${this.target.offsetTop}px`
-    this.targetLeft = this.target.offsetLeft
-    this.targetTop = this.target.offsetTop
-    this.options = Object.assign({}, options)
+
+    this.targetLeft = parseFloat(this.targetStyles.left)
+    this.targetTop = parseFloat(this.targetStyles.top)
+
     this.grabbing = false
     this.mouseX = 0
     this.mouseY = 0
@@ -16,7 +21,7 @@ class DragBlock {
   }
 
   init() {
-    this._setBar()
+    this.options.useDragBar ? this._setBar() : this._setNoBarTrigger()
     this._setWrapper()
     this._setTrigger()
   }
@@ -46,6 +51,11 @@ class DragBlock {
   _setTrigger() {
     this.target.addEventListener('mouseover', this.targetMouseoverHandler.bind(this))
     this.target.addEventListener('mouseleave', this.targetMouseleaveHandler.bind(this))
+  }
+
+  _setNoBarTrigger() {
+    this.target.addEventListener('mousedown', this.barMousedownHandler.bind(this))
+    this.target.style.cursor = 'move'
   }
 
   grab(e) {
@@ -102,6 +112,10 @@ class DragBlock {
     if (content) dom.append(content)
     return dom
   }
+}
+
+if (window) {
+  window.DragBlock = DragBlock
 }
 
 export default DragBlock
