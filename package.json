@@ -1,6 +1,6 @@
 {
   "name": "drag-block",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple drag plugin for every fixed element.",
   "main": "index.js",
   "scripts": {

@@ -1,2 +1,2 @@
-module.exports = require('./lib/drag-block');
-exports.default = require('./lib/drag-block');
+import DragBlock from './src/drag-block.js'
+export default DragBlock
