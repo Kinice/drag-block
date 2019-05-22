@@ -1,0 +1,19 @@
+{
+  "name": "drag-block",
+  "version": "1.0.0",
+  "description": "A simple drag plugin for every fixed element.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kinice/drag-block.git"
+  },
+  "author": "Kinice",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/Kinice/drag-block/issues"
+  },
+  "homepage": "https://github.com/Kinice/drag-block#readme"
+}
