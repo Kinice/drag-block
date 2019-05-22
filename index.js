@@ -1,2 +1,2 @@
-import DragBlock from './src/drag-block.js'
+import DragBlock from './lib/drag-block.js'
 export default DragBlock
