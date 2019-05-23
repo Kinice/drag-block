@@ -17,7 +17,9 @@ module.exports = {
   },
   output: {
     path: resolve('example'),
-    filename: '[name].js'
+    filename: '[name].js',
+    library: 'DragBlock',
+    libraryTarget: 'umd'
   },
   module: {
     rules: [{
