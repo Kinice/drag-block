@@ -28,9 +28,7 @@ import DragBlock from 'drag-block'
 然后在js中使用：
 
 ```javascript
-import DragBlock from 'drag-block'
-
-new DragBlock(DomElement, options)
+new DragBlock(DomElement[, options])
 ```
 
 其中`DomElement`是需要可拖拽的`position: fixed | absolute | reletive`元素，options是选项对象。

@@ -1,6 +1,5 @@
 const path = require('path')
 const webpack = require('webpack')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
@@ -10,7 +9,6 @@ function resolve(dir) {
 }
 
 module.exports = {
-  mode: 'production',
   entry: {
     'drag-block': resolve('src/drag-block.js'),
     example: resolve('src/index.js')
@@ -53,33 +51,11 @@ module.exports = {
     extensions: ['.js']
   },
   plugins: [
-    new CleanWebpackPlugin([resolve('lib'), resolve('example')], {
-      allowExternal: true
-    }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: resolve('src/index.html'),
       inject: 'body',
       hash: true
-    }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: "'production'"
-      }
     })
-  ],
-  optimization: {
-    minimizer: [
-      new UglifyJsPlugin({
-        uglifyOptions: {
-          compress: {
-            drop_debugger: true
-          }
-        },
-        sourceMap: true,
-        cache: true,
-        parallel: true
-      })
-    ]
-  }
+  ]
 }

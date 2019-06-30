@@ -4,12 +4,16 @@ class DragBlock {
     this.target = dom
     if (!this.target) return
     this.options = Object.assign({
-      useDragBar: true
+      useDragBar: true,
+      // edgeDetection: true,
+      // mobile: false,
     }, options)
 
     this.targetStyles = window.getComputedStyle(dom)
     this.target.style.left = this.targetStyles.left || `${this.target.offsetLeft}px`
     this.target.style.top = this.targetStyles.top || `${this.target.offsetTop}px`
+    // fix right style already set bug
+    this.target.style.right = 'auto'
 
     this.targetLeft = parseFloat(this.targetStyles.left)
     this.targetTop = parseFloat(this.targetStyles.top)
@@ -31,8 +35,8 @@ class DragBlock {
       id: 'drag-bar',
       class: 'drag-bar'
     })
-    bar.addEventListener('mousedown', this.barMousedownHandler.bind(this))
 
+    bar.addEventListener('mousedown', this.barMousedownHandler.bind(this))
     this.target.append(bar)
     this.bar = bar
   }
@@ -59,6 +63,7 @@ class DragBlock {
   }
 
   grab(e) {
+    console.dir(this.targetStyles.right)
     cancelAnimationFrame(this.timer)
     this.timer = requestAnimationFrame(() => {
       let moveX = e.screenX - this.mouseX,
