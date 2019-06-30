@@ -1,8 +1,13 @@
 const merge = require('webpack-merge')
 const base = require('./webpack')
+const path = require('path')
 const webpack = require('webpack')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+
+function resolve(dir) {
+  return path.join(__dirname, dir)
+}
 
 let prodConfig = merge(base, {
   mode: 'production',
