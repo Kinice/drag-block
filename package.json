@@ -1,6 +1,6 @@
 {
   "name": "drag-block",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "A simple drag plugin for DOM element that have been positioned.",
   "main": "index.js",
   "scripts": {

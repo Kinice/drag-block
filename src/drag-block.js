@@ -21,6 +21,7 @@ class DragBlock {
     this.grabbing = false
     this.mouseX = 0
     this.mouseY = 0
+    console.log('test drop console')
     this.init()
   }
 
@@ -63,7 +64,6 @@ class DragBlock {
   }
 
   grab(e) {
-    console.dir(this.targetStyles.right)
     cancelAnimationFrame(this.timer)
     this.timer = requestAnimationFrame(() => {
       let moveX = e.screenX - this.mouseX,
