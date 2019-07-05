@@ -84,7 +84,7 @@ class DragBlock {
     this.mouseY = e.screenY
     this.grabbing = true
     this.wrapper.style.display = 'block'
-    this.wrapper.style['z-index'] = 999999999
+    this.wrapper.style['z-index'] = 9999999999
   }
 
   wrapperMouseupHandler(e) {
