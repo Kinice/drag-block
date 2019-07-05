@@ -16,7 +16,8 @@ let prodConfig = merge(base, {
       new UglifyJsPlugin({
         uglifyOptions: {
           compress: {
-            drop_debugger: true
+            drop_debugger: true,
+            drop_console: true
           }
         },
         sourceMap: true,
