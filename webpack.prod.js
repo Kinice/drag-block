@@ -3,7 +3,7 @@ const base = require('./webpack')
 const path = require('path')
 const webpack = require('webpack')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 function resolve(dir) {
   return path.join(__dirname, dir)
@@ -27,8 +27,9 @@ let prodConfig = merge(base, {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin([resolve('lib'), resolve('example')], {
-      allowExternal: true
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns: [resolve('lib'), resolve('example')],
+      verbose: true
     }),
     new webpack.DefinePlugin({
       'process.env': {
