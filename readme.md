@@ -54,7 +54,7 @@ drag.on('dragStart', target => {
 ## Events
 
 事件名称 | 说明 | 回调参数
--|-|-|-
+-|-|-
 `dragStart` | 点击bar或者本体开始拖动时触发 | 目标dom
 `dragEnd` | 拖动结束时触发 | 目标dom
 
