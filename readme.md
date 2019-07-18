@@ -28,7 +28,15 @@ import DragBlock from 'drag-block'
 然后在js中使用：
 
 ```javascript
-new DragBlock(DomElement[, options])
+let drag = new DragBlock(DomElement[, options])
+```
+
+可以监听相应的事件：
+
+```javascript
+drag.on('dragStart', target => {
+  console.log(target.style.left)
+})
 ```
 
 其中`DomElement`是需要可拖拽的`position: fixed | absolute | reletive`元素，options是选项对象。
@@ -42,6 +50,13 @@ new DragBlock(DomElement[, options])
 `useDragBar` | 是否使用弹出的拖拽条，`false`时直接拖拽目标本体 | `Boolean` | `true`
 
 更多功能和配置项后续添加～欢迎提交[issue](https://github.com/Kinice/drag-block/issues)～
+
+## Events
+
+事件名称 | 说明 | 回调参数
+-|-|-|-
+`dragStart` | 点击bar或者本体开始拖动时触发 | 目标dom
+`dragEnd` | 拖动结束时触发 | 目标dom
 
 ## Example
 

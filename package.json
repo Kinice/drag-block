@@ -1,6 +1,6 @@
 {
   "name": "drag-block",
-  "version": "1.1.9",
+  "version": "1.2.0",
   "description": "A simple drag plugin for DOM element that have been positioned.",
   "main": "index.js",
   "scripts": {
@@ -50,5 +50,8 @@
     "last 10 versions",
     "not ie <= 8",
     "iOS >= 8"
-  ]
+  ],
+  "dependencies": {
+    "event-emitter-es6": "^1.1.5"
+  }
 }

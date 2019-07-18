@@ -1,6 +1,8 @@
+import EventEmitter from 'event-emitter-es6'
 import './style/index.less'
-class DragBlock {
+class DragBlock extends EventEmitter {
   constructor(dom, options = {}) {
+    super()
     this.target = dom
     if (!this.target) return
     this.options = Object.assign({
@@ -21,7 +23,6 @@ class DragBlock {
     this.grabbing = false
     this.mouseX = 0
     this.mouseY = 0
-    console.log('test drop console')
     this.init()
   }
 
@@ -85,12 +86,14 @@ class DragBlock {
     this.grabbing = true
     this.wrapper.style.display = 'block'
     this.wrapper.style['z-index'] = 9999999999
+    this.emit('dragStart', this.target)
   }
 
   wrapperMouseupHandler(e) {
     this.grabbing = false
     this.wrapper.style.display = 'none'
     this.wrapper.style['z-index'] = 1
+    this.emit('dragEnd', this.target)
   }
 
   wrapperMousemoveHandler(e) {
