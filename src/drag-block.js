@@ -17,9 +17,6 @@ class DragBlock extends EventEmitter {
     // fix right style already set bug
     this.target.style.right = 'auto'
 
-    this.targetLeft = parseFloat(this.targetStyles.left)
-    this.targetTop = parseFloat(this.targetStyles.top)
-
     this.grabbing = false
     this.mouseX = 0
     this.mouseY = 0
@@ -33,7 +30,7 @@ class DragBlock extends EventEmitter {
   }
 
   _setBar() {
-    let bar = this._createDom('div', {
+    let bar = DragBlock._createDom('div', {
       id: 'drag-bar',
       class: 'drag-bar'
     })
@@ -44,7 +41,7 @@ class DragBlock extends EventEmitter {
   }
 
   _setWrapper() {
-    let wrapper = this._createDom('div', {
+    let wrapper = DragBlock._createDom('div', {
       class: 'drag-wrapper'
     })
     wrapper.addEventListener('mouseup', this.wrapperMouseupHandler.bind(this))
@@ -81,6 +78,8 @@ class DragBlock extends EventEmitter {
   }
 
   barMousedownHandler(e) {
+    this.targetLeft = parseFloat(this.targetStyles.left)
+    this.targetTop = parseFloat(this.targetStyles.top)
     this.mouseX = e.screenX
     this.mouseY = e.screenY
     this.grabbing = true
@@ -110,7 +109,7 @@ class DragBlock extends EventEmitter {
     if (this.bar) this.bar.classList.remove('show')
   }
 
-  _createDom(type = 'div', options = {}, content) {
+  static _createDom(type = 'div', options = {}, content) {
     let dom = document.createElement(type)
     if (options && options.toString() === '[object Object]' && JSON.stringify(options) !== '{}') {
       Object.keys(options).forEach(item => {
